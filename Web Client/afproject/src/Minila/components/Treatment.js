@@ -5,6 +5,7 @@ import Calendar from 'react-calendar';
 import Header from '../../Header';
 import Sidebar from '../../NavBar';
 import './home.css';
+import { Link } from "react-router-dom";
 export class Treatment extends React.Component {
 
   state = {
@@ -41,8 +42,23 @@ export class Treatment extends React.Component {
     return (
       <div>
         <div>
-        <Header />
-        <Sidebar />
+          <Header />
+          <div className="nav-bar">
+            <ul>
+              <li><Link to={"/doctor/"}>OPD</Link></li>
+              <li><Link to={"/doctor/"}>Dashboard</Link></li>
+              <li><Link to={"/doctor/home"}>My OPD Patients</Link></li>
+              <hr />
+              <li><Link to={"/doctor/examination"}>Examination</Link></li>
+              <li><Link to={"/doctor/treatment"}>Treatment</Link></li>
+              <li><Link to={"/doctor/injection"}>Order Injection</Link></li>
+              <hr />
+              <li><Link to={"/doctor/viewtable"}>Create View</Link></li>
+              <li><Link to={"/doctor/examinationtable"}>Examination View</Link></li>
+              <li><Link to={"/doctor/treatmenttable"}>Treatment View</Link></li>
+              <li><Link to={"/doctor/injectiontable"}>Injection View</Link></li>
+            </ul>
+          </div>
         </div>
         <div>
           <div className="raw">

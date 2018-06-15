@@ -6,7 +6,7 @@ import api from '../Urls';
 import Patient from './PatientDetails';
 import dateFormat from 'dateformat';
 import NavBar from '../NavBar';
-import Header from '../Header';
+import Header from '../../Header';
 import { Panel, FormControl, ControlLabel, FormGroup, Button, Form } from 'react-bootstrap';
 var now = new Date();
 

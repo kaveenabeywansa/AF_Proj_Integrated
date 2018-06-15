@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../../Header';
 import Sidebar from '../../NavBar';
+import { Link } from "react-router-dom";
 
 export class Viewtable extends React.Component {
     state = {
@@ -10,7 +11,7 @@ export class Viewtable extends React.Component {
     };
 
     componentDidMount() {
-        axios.get('http://localhost:3001/view/'+sessionStorage.getItem('patientnic'))
+        axios.get('http://localhost:3001/view/' + sessionStorage.getItem('patientnic'))
             .then(res => {
                 this.setState({
                     view: res.data.data || res.data
@@ -21,7 +22,22 @@ export class Viewtable extends React.Component {
         return (
             <div>
                 <Header />
-                <Sidebar />
+                <div className="nav-bar">
+                    <ul>
+                        <li><Link to={"/doctor/"}>OPD</Link></li>
+                        <li><Link to={"/doctor/"}>Dashboard</Link></li>
+                        <li><Link to={"/doctor/home"}>My OPD Patients</Link></li>
+                        <hr />
+                        <li><Link to={"/doctor/examination"}>Examination</Link></li>
+                        <li><Link to={"/doctor/treatment"}>Treatment</Link></li>
+                        <li><Link to={"/doctor/injection"}>Order Injection</Link></li>
+                        <hr />
+                        <li><Link to={"/doctor/viewtable"}>Create View</Link></li>
+                        <li><Link to={"/doctor/examinationtable"}>Examination View</Link></li>
+                        <li><Link to={"/doctor/treatmenttable"}>Treatment View</Link></li>
+                        <li><Link to={"/doctor/injectiontable"}>Injection View</Link></li>
+                    </ul>
+                </div>
                 <div className="raw">
                     <h3>The User Page</h3>
                     <table className="table table-hover">
