@@ -3,8 +3,8 @@ import './DocHome.css';
 import axios from 'axios';
 import api from '../Urls';
 import NavBar from '../NavBar';
-import {Panel,FormControl,ControlLabel,FormGroup,Button,Form} from 'react-bootstrap';
 import Header from '../Header';
+import {Panel,FormControl,ControlLabel,FormGroup,Button,Form} from 'react-bootstrap';
 
 export default class DocHome extends Component {
     constructor(props){
@@ -19,8 +19,8 @@ export default class DocHome extends Component {
     }
     getQueue(){
         this.state.queue.map(queue=>{
-            var ids=queue.patient;
-            axios.get(api.API+"patient/"+ids).then(res=>{
+            var nic=queue.patient;
+            axios.get(api.API+"patient/"+nic).then(res=>{
                 this.setState({
                     patient: res.data.data || res.data
                 });
@@ -29,7 +29,8 @@ export default class DocHome extends Component {
 
     }
     getAll(){
-        axios.get(api.API+"queue/Nishantha").then(res=>{
+        var doc=sessionStorage.getItem('userFname');
+        axios.get(api.API+"queue/"+doc).then(res=>{
             this.setState({
                     queue: res.data.data || res.data
             });
@@ -59,15 +60,19 @@ export default class DocHome extends Component {
             });
         }
         else{
-            axios.post(api.API+"doctor/",{name: 'Nishantha'}).then(res=>{
+            var doc1=sessionStorage.getItem('userFName');
+            axios.post(api.API+"doctor/",{name: doc1}).then(res=>{
                 this.changeButton('Hold');
             }).catch(err=>{
                 alert(err);
             });
         }
     }
+    setNICSession(obj,nic){
+        sessionStorage.setItem('patientnic', nic);
+        obj.props.history.push('/doctor/questionnaire');
+    }
     removePatient(id){
-        alert(id);
         var ids=id;
         axios.delete(api.API+"queue/"+ids).then(res=>{
             if(res.status == 200){
@@ -79,11 +84,8 @@ export default class DocHome extends Component {
     }
     render() {
         return (
-            <div>
-            <div>
-                <Header />
-            </div>
             <div className={"DocHome"}>
+                <Header/>
                 <NavBar/>
                 <div className={"bottom-content"}>
                     <Panel bsStyle="primary">
@@ -127,23 +129,23 @@ export default class DocHome extends Component {
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
-                                    <th scope="col" className={"field-border"}>Patient HIN</th>
+                                    <th scope="col" className={"field-border"}>Patient NIC</th>
                                     <th scope="col" className={"field-border"}>Name</th>
-                                    <th scope="col" className={"field-border"}>Age</th>
+                                    <th scope="col" className={"field-border"}>Date Of Birth</th>
                                     <th scope="col" className={"field-border"}>Sex</th>
                                     <th scope="col" className={"field-border"}>Remarks</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {this.state.patient.map(patient=>
-                                    <tr class="table-active" key={patient.id}>
-                                        <td className={"field-border-1"}>{patient.hin}</td>
-                                        <td className={"field-border-1"}>{patient.name}</td>
-                                        <td className={"field-border-1"}>{patient.age}</td>
-                                        <td className={"field-border-1"}>{patient.sex}</td>
-                                        <td className={"field-border-1"}>{patient.remarks}</td>
+                                    <tr class="table-active" key={patient.id} onClick={event=>this.setNICSession(this,patient.nic)}>
+                                        <td className={"field-border-1"}>{patient.nic}</td>
+                                        <td className={"field-border-1"}>{patient.Full_Name}</td>
+                                        <td className={"field-border-1"}>{patient.DateOfBirth}</td>
+                                        <td className={"field-border-1"}>{patient.gender}</td>
+                                        <td className={"field-border-1"}>{patient.Remarks}</td>
                                         <td className={"field-border-1"}>
-                                            <Button bsStyle="primary" onClick={event=>this.removePatient(patient._id)}>Dismiss</Button>
+                                            <Button bsStyle="primary" onClick={event=>this.removePatient(patient.nic)}>Dismiss</Button>
                                         </td>
                                     </tr>
                                 )}
@@ -153,7 +155,6 @@ export default class DocHome extends Component {
                     </Panel>
 
                 </div>
-            </div>
             </div>
         );
     }

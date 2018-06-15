@@ -41,15 +41,6 @@ export default class Header extends Component{
                 </Navbar.Collapse>
             </Navbar>
             </div>
-
-
-           /* <div className={"header"}>
-                <header className="App-header">
-                    <div className="App-header-left">
-                        <img src={logo} className="image"/>
-                    </div>
-                </header>
-        </div>*/
         );
     }
 }
