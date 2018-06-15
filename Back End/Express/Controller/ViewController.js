@@ -26,9 +26,9 @@ var Controller=function () {
             })
         });
     }
-    this.getAllPatient=function () {
+    this.getAllPatient=function (nic) {
         return new Promise(function (resolve,reject) {
-            PatientViewSchema.find().exec().then(function (data) {
+            PatientViewSchema.find({nic:nic}).exec().then(function (data) {
                 resolve({status:200,patientviewdata:data});
             }).catch(function (err) {
                 reject({status:404,message:"No data available"});

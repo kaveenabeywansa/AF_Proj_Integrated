@@ -15,9 +15,9 @@ router.post('/', function (req, res) {
      //   res.status("401").send({ message: "You are not authorized !" });
    // }
 });
-router.get('/', function (req, res) {
+router.get('/:nic', function (req, res) {
     //if (req.headers.authorization === "1234") {
-        Controller.getAllPatient().then(function (data) {
+        Controller.getAllPatient(req.params.nic).then(function (data) {
             res.status(data.status).send({ data: data.patientviewdata });
         }).catch(function (err) {
             res.status(err.status).send({ message: "Error" });

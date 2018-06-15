@@ -19,14 +19,14 @@ export class Home extends React.Component {
             <div className="col-md-3"></div>
             <div className="col-md-6">
                 Home
-                <Link to={"/view"}>View</Link>
-                <Link to={"/examination"}>Examination</Link>
-                <Link to={"/treatment"}>Treatment</Link>
-                <Link to={"/injection"}>Order injection</Link>
-                <Link to={"/viewtable"}>Create View</Link>
-                <Link to={"/examinationtable"}>Examination view</Link>
-                <Link to={"/treatmenttable"}> Treatment view</Link>
-                <Link to={"/injectiontable"}>Injection view</Link>
+                <Link to={"/doctor/view"}>View</Link>
+                <Link to={"/doctor/examination"}>Examination</Link>
+                <Link to={"/doctor/treatment"}>Treatment</Link>
+                <Link to={"/doctor/injection"}>Order injection</Link>
+                <Link to={"/doctor/viewtable"}>Create View</Link>
+                <Link to={"/doctor/examinationtable"}>Examination view</Link>
+                <Link to={"/doctor/treatmenttable"}> Treatment view</Link>
+                <Link to={"/doctor/injectiontable"}>Injection view</Link>
                 <div>
               
               </div>

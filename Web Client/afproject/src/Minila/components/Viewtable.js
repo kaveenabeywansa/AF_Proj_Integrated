@@ -10,7 +10,7 @@ export class Viewtable extends React.Component {
     };
 
     componentDidMount() {
-        axios.get('http://localhost:3001/view/')
+        axios.get('http://localhost:3001/view/'+sessionStorage.getItem('patientnic'))
             .then(res => {
                 this.setState({
                     view: res.data.data || res.data

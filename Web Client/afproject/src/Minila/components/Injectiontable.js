@@ -12,7 +12,7 @@ export class Injectiontable extends React.Component {
     };
 
     componentDidMount() {
-        axios.get('http://localhost:3001/Injection/')
+        axios.get('http://localhost:3001/Injection/'+sessionStorage.getItem('patientnic'))
             .then(res => {
                 this.setState({
                     injection: res.data.data || res.data

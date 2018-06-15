@@ -18,9 +18,9 @@ var Controller=function () {
             })
         });
     }
-    this.getAllTreatment=function () {
+    this.getAllTreatment=function (nic) {
         return new Promise(function (resolve,reject) {
-            TreatmentSchema.find().exec().then(function (data) {
+            TreatmentSchema.find({nic:nic}).exec().then(function (data) {
                 resolve({status:200,menudata:data});
             }).catch(function (err) {
                 reject({status:404,message:"No data available"});

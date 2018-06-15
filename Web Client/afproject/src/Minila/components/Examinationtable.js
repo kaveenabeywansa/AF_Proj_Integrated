@@ -11,7 +11,7 @@ export class Examinationtable extends React.Component {
     };
 
     componentDidMount() {
-        axios.get('http://localhost:3001/examination/')
+        axios.get('http://localhost:3001/examination/'+sessionStorage.getItem('patientnic'))
             .then(res => {
                 this.setState({
                     examinations: res.data.data || res.data

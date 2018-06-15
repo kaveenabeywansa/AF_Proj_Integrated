@@ -12,7 +12,7 @@ export class Treatmenttable extends React.Component {
     };
 
     componentDidMount() {
-        axios.get('http://localhost:3001/treatment/')
+        axios.get('http://localhost:3001/treatment/'+sessionStorage.getItem('patientnic'))
             .then(res => {
                 this.setState({
                     treatment: res.data.data || res.data

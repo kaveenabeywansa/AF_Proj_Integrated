@@ -13,25 +13,6 @@ const Attachments = new Schema({
     file: String
 });
 
-<<<<<<< HEAD
-const PatientSchema = new Schema({
-    Title: String,
-    Full_Name: String,
-    other_name: String,
-    civil_status: String,
-    gender: String,
-    DateOfBirth: String,
-    nic: String,
-    citizenship: String,
-    Blood_Group: String,
-    preferred_language: String,
-    Address: String,
-    phone: String,
-    contact_person_name: String,
-    contact_person_tel: String,
-    Choose_file: String,
-    Remarks: String
-=======
 const PatientSchema=new Schema({
     Title:String,
     Full_Name:String,
@@ -49,7 +30,6 @@ const PatientSchema=new Schema({
     contact_person_tel:String,
     Choose_file:String,
     Remarks:String
->>>>>>> 0995048c58564c04817c7ea754d816e3a56a3cce
 
 });
 
@@ -107,6 +87,10 @@ const QueueSchema = new Schema({
 });
 
 const PatientViewSchema = new Schema({
+    nic:{
+        type:String,
+        require:true
+    },
     injury: {
         type: String,
         require: true
@@ -130,6 +114,10 @@ const PatientViewSchema = new Schema({
 });
 
 const Examinationchema = new Schema({
+    nic:{
+        type:String,
+        require:true
+    },
     examinationDateandTime: {
         type: String,
         require: true
@@ -156,6 +144,10 @@ const Examinationchema = new Schema({
     }
 });
 const TreatmentSchema = new Schema({
+    nic:{
+        type:String,
+        require:true
+    },
     tretmentDateandTime: {
         type: String,
         require: true
@@ -175,6 +167,10 @@ const TreatmentSchema = new Schema({
 
 });
 const InjectionSchema = new Schema({
+    nic:{
+        type:String,
+        require:true
+    },
     injectionDateandTime: {
         type: String,
         require: true
