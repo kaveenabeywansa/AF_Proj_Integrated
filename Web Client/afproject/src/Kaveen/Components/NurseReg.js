@@ -21,7 +21,7 @@ class NurseRegister extends Component {
         axios.post('http://localhost:8080/nurse', {
             nurseRegNo: document.getElementById("regno").value,
             fName: document.getElementById("fname").value,
-            lname: document.getElementById("lname").value,
+            lName: document.getElementById("lname").value,
             nic: document.getElementById("nic").value,
             address: document.getElementById("address").value,
             phone: document.getElementById("phone").value,
