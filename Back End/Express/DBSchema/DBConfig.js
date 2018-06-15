@@ -13,6 +13,7 @@ const Attachments = new Schema({
     file: String
 });
 
+<<<<<<< HEAD
 const PatientSchema = new Schema({
     Title: String,
     Full_Name: String,
@@ -30,6 +31,25 @@ const PatientSchema = new Schema({
     contact_person_tel: String,
     Choose_file: String,
     Remarks: String
+=======
+const PatientSchema=new Schema({
+    Title:String,
+    Full_Name:String,
+    other_name:String,
+    civil_status:String,
+    gender:String,
+    DateOfBirth:Date,
+    nic:String,
+    citizenship:String,
+    Blood_Group:String,
+    preferred_language:String,
+    Address:String,
+    phone:String,
+    contact_person_name:String,
+    contact_person_tel:String,
+    Choose_file:String,
+    Remarks:String
+>>>>>>> 0995048c58564c04817c7ea754d816e3a56a3cce
 
 });
 
