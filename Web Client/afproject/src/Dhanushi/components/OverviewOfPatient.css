@@ -1,0 +1,28 @@
+.PatientOverview{
+    font-size: 200%;
+    text-align: center;
+    font-weight: bold;
+}
+.Details{
+    font-size: 100%;
+    text-align: right;
+    margin-right: 10%;
+    text-anchor:top;
+    color: black;
+    font-weight: bold
+     
+}
+.rus{
+    margin-top: -25%;
+}
+.col-md-4{
+    margin-left: 70%;
+    margin-top: 10%;
+}
+.OverviewOfPatient{
+    background-color: white;
+    margin-left: 20%;
+    margin-right: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}

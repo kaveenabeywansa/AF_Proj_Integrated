@@ -1,0 +1,29 @@
+.PatientRegistration {
+  text-align: left;
+  background-color: white;
+  margin-left: 20%;
+  margin-right: 5%;
+}
+
+.PatientRegistration-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.PatientRegistration-title {
+  font-size: 1.5em;
+}
+
+.PatientRegistration-intro {
+  font-size: large;
+}
+
+.nurseHomeBckgrnd{
+  background-color: white;
+  margin-right: 5%;
+  margin-left: 20%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
