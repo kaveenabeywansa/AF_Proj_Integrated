@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import OPD.OPD.model.Doctor;
 import OPD.OPD.model.LoginCredentials;
 import OPD.OPD.model.LoginRepository;
-import OPD.OPD.model.Nurse;
 
 @CrossOrigin
 @RestController
