@@ -1,0 +1,36 @@
+/* .abc{
+    margin-left: 20%;
+    
+    
+}
+.card text-white bg-secondary mb-3{
+    
+}    
+
+body{
+    height: 100%;
+}
+html{
+    height: 100%;
+    
+} */
+.nav-bar{
+    width: 15%;
+    background-color: #303030;
+    color: white;
+    height: 100%;
+    top: 50px;
+    position: fixed;
+}
+.raw{
+    background-color: white;
+    margin-left: 20%;
+    margin-top: 5%;
+    width: 75%;
+}
+.displaybackground{
+    background-color: white;
+    margin-left: 20%;
+    margin-top: 5%;
+    width: 75%;
+}

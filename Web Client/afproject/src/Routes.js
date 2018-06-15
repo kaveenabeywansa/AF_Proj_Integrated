@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // Dhanushi
-import Home from "./Dhanushi/components/Home";
+import NurseHome from "./Dhanushi/components/Home";
 import OverviewOfPatient from './Dhanushi/components/OverviewOfPatient';
 import PatientRegistration from './Dhanushi/components/PatientRegistration';
 import PrintCard from './Dhanushi/components/PrintCard';
@@ -21,6 +21,18 @@ import ViewQuestions from './Viraj/Doctor/ViewQuestions';
 import AddToQueue from './Viraj/Nurse/AddToQueue';
 import PatientDetails from './Viraj/Nurse/PatientDetails';
 import PrintToken from './Viraj/Nurse/PrintToken';
+// Minila
+import { User } from "./Minila/components/User";
+import { View } from "./Minila/components/View";
+import { Examination } from "./Minila/components/Examination";
+import { Treatment } from "./Minila/components/Treatment";
+import { Injection } from "./Minila/components/Injection";
+import { Viewtable } from "./Minila/components/Viewtable";
+import { Examinationtable } from "./Minila/components/Examinationtable";
+import { Treatmenttable } from "./Minila/components/Treatmenttable";
+import { Injectiontable } from "./Minila/components/Injectiontable";
+import Header from "./Minila/components/Header";
+import DoctorHome from "./Minila/components/Home";
 export default () => {
     return (
         <BrowserRouter>
@@ -32,7 +44,7 @@ export default () => {
                 <Route path="/register/doctor" exact component={DocAccCreate} />
                 <Route path="/register/nurse" exact component={NurseAccCreate} />
 
-                <Route path="/nurse" exact component={Home} />
+                <Route path="/nurse" exact component={NurseHome} />
                 <Route path="/nurse/PatientRegistration" exact component={PatientRegistration} />
                 <Route path="/nurse/overviewofpatient" exact component={OverviewOfPatient} />
                 <Route path="/nurse/printcard" exact component={PrintCard} />
@@ -48,6 +60,18 @@ export default () => {
                 <Route path="/nurse/addtoqueue" exact component={AddToQueue} />
                 <Route path="/nurse/patientdetails" exact component={PatientDetails} />
                 <Route path="/nurse/printtoken" exact component={PrintToken} />
+
+                <Route path="/doctor/home" exact component={DoctorHome} />
+                <Route path="/doctor/view" exact component={View} />
+                <Route path="/doctor/examination" exact component={Examination} />
+                <Route path="/doctor/treatment" exact component={Treatment} />
+                <Route path="/doctor/injection" exact component={Injection} />
+                <Route path="/doctor/viewtable" exact component={Viewtable} />
+                <Route path="/doctor/examinationtable" exact component={Examinationtable} />
+                <Route path="/doctor/treatmenttable" exact component={Treatmenttable} />
+                <Route path="/doctor/injectiontable" exact component={Injectiontable} />
+                <Route path="/doctor/user" exact component={User} />
+
             </Switch>
         </BrowserRouter>
     )
