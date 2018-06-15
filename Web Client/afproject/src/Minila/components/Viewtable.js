@@ -40,7 +40,7 @@ export class Viewtable extends React.Component {
                     </ul>
                 </div>
                 <div className="raw">
-                    <h3>The User Page</h3>
+                    <h3>New Visits</h3>
                     <table className="table table-hover">
                         <thead>
                             <tr>
