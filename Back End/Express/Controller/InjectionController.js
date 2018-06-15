@@ -5,7 +5,7 @@ var Controller=function () {
     this.insertInjection=function (data) {
         return new Promise(function (resolve,reject) {
             var Injection=new InjectionSchema({
-
+                nic:data.nic,
                 injectionDateandTime: data.injectionDateandTime,//fronend
                 injection : data.injection,
                 iremaks : data.iremaks

@@ -31,12 +31,12 @@ class PatientRegistration extends Component {
       citizenship: document.getElementById('citizenship').value,
       Blood_Group: document.getElementById('Blood_Group').value,
       preferred_language: document.getElementById('preferred_language').value,
-      address: document.getElementById('Address').value,
+      Address: document.getElementById('Address').value,
       phone: document.getElementById('phone').value,
       contact_person_name: document.getElementById('contact_person_name').value,
       contact_person_tel: document.getElementById('contact_person_tel').value,
       Choose_file: document.getElementById('Choose_file').value,
-      remarks: document.getElementById('Remarks').value,
+      Remarks: document.getElementById('Remarks').value,
 
     }, )
       .then(function (response) {

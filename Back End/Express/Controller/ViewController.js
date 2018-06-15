@@ -7,7 +7,7 @@ var Controller=function () {
         return new Promise(function (resolve,reject) {
            
             var PatientView=new PatientViewSchema({
-                
+                nic:data.nic,
                 injury: data.injury,
                 visittype: data.visittype,
                 iremark: data.iremark,
@@ -15,7 +15,6 @@ var Controller=function () {
                 doctor:data.doctor
                
             });
-            console.log("hsjkfkjsdge");
             PatientView.save().then(function () {
                
                 resolve({status:200,message:"PatientView inserted successfully !"});

@@ -4,6 +4,7 @@ import axios from 'axios';
 import Calendar from 'react-calendar';
 import Header from '../../Header';
 import Sidebar from '../../NavBar';
+import { Link } from "react-router-dom";
 
 export class View extends React.Component {
   constructor(props) {
@@ -23,8 +24,8 @@ export class View extends React.Component {
     });
   }
   createview(obj) {
-    console.log("dhsjkfhdk");
     axios.post('http://localhost:3001/view/', {
+      nic: sessionStorage.getItem('patientnic'),
       injury: document.getElementById('injury').value,
       visittype: document.getElementById('visittype').value,
       iremark: document.getElementById('Remark').value,
@@ -32,8 +33,6 @@ export class View extends React.Component {
       doctor: document.getElementById('Doctor').value
     }//,{ headers: {"Authorization" : "admin123"}}
     ).then(function (response) {
-
-      console.log("gdfhdgdd");
 
       alert("success...!!!");
       console.log(response);
@@ -50,12 +49,28 @@ export class View extends React.Component {
       <div>
         <div>
           <Header />
-          <Sidebar />
+          <div className="nav-bar">
+            <ul>
+              <li><Link to={"/doctor/"}>OPD</Link></li>
+              <li><Link to={"/doctor/"}>Dashboard</Link></li>
+              <li><Link to={"/doctor/home"}>My OPD Patients</Link></li>
+              <hr />
+              <li><Link to={"/doctor/examination"}>Examination</Link></li>
+              <li><Link to={"/doctor/treatment"}>Treatment</Link></li>
+              <li><Link to={"/doctor/injection"}>Order Injection</Link></li>
+              <li><Link to={"/doctor/view"}>Create New Visit</Link></li>
+              <hr />
+              <li><Link to={"/doctor/viewtable"}>View Visits</Link></li>
+              <li><Link to={"/doctor/examinationtable"}>Examination View</Link></li>
+              <li><Link to={"/doctor/treatmenttable"}>Treatment View</Link></li>
+              <li><Link to={"/doctor/injectiontable"}>Injection View</Link></li>
+            </ul>
+          </div>
         </div>
         <div className="raw">
           <div className="col-md-3"></div>
           <div className="col-md-8">
-            <h1>Create View</h1>
+            <h1>Create New Visit</h1>
             <form>
               <div className="form-group">
                 <label htmlFor="exampleInputPassword1">Injury</label>
@@ -81,7 +96,7 @@ export class View extends React.Component {
     </div> */}
               <div className="form-group">
                 <label htmlFor="exampleInputPassword1">Doctor</label>
-                <input type="text" className="form-control" id="Doctor" placeholder="Doctor"></input>
+                <input type="text" className="form-control" id="Doctor" value={sessionStorage.getItem('userFName')} placeholder="Doctor"></input>
               </div>
               <div>
                 <button type="submit" className="btn btn-primary" onClick={() => this.createview(this)}>Create</button>

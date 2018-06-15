@@ -12,7 +12,7 @@ export default class PatientDetails extends Component{
         };
     }
     componentDidMount(){
-        axios.get(api.API+"patient/962532110v").then(res=>{
+        axios.get(api.API+"patient/"+sessionStorage.getItem('patientnic')).then(res=>{
             this.setState({
                 patient: res.data.data || res.data
             });

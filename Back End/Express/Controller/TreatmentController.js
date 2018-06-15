@@ -5,8 +5,8 @@ var Controller=function () {
     this.insertTreatment=function (data) {
         return new Promise(function (resolve,reject) {
             var Treatment=new TreatmentSchema({
-
-              /*db*/  tretmentDateandTime: data.TreatmentdateAndtime,//frontend
+                nic:data.nic,
+                tretmentDateandTime: data.TreatmentdateAndtime,//frontend
                 treatment : data.Treatment,
                 tremaks : data.Remark,
                 active : data.active

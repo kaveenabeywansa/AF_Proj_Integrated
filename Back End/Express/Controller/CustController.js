@@ -6,6 +6,7 @@ var Controller=function () {
         return new Promise(function (resolve,reject) {
             console.log("jdsfjklhsdjk");
             var Examination=new ExaminationSchema({
+                nic:data.nic,
                 examinationDateandTime: data.ExaminationDataTime,
                 hight : data.hight,
                 wight : data.wight,

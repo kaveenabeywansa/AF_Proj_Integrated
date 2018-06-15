@@ -3,28 +3,28 @@ var router = express.Router();
 var Controller = require('./ViewController');
 
 router.post('/', function (req, res) {
-   // if (req.headers.authorization === "1234") {
-     
-        Controller.insertPatientView(req.body).then(function (data) {
+    // if (req.headers.authorization === "1234") {
 
-            res.status(data.status).send({ message: data.message });
-        }).catch(function (err) {
-            res.status(err.status).send({ message: err.message });
-        })
-   // } else {
-     //   res.status("401").send({ message: "You are not authorized !" });
-   // }
+    Controller.insertPatientView(req.body).then(function (data) {
+
+        res.status(data.status).send({ message: data.message });
+    }).catch(function (err) {
+        res.status(err.status).send({ message: err.message });
+    })
+    // } else {
+    //   res.status("401").send({ message: "You are not authorized !" });
+    // }
 });
-router.get('/:nic', function (req, res) {
+router.get('/:id', function (req, res) {
     //if (req.headers.authorization === "1234") {
-        Controller.getAllPatient(req.params.nic).then(function (data) {
-            res.status(data.status).send({ data: data.patientviewdata });
-        }).catch(function (err) {
-            res.status(err.status).send({ message: "Error" });
-        })
-  //  } else {
-      //  res.status("401").send({ message: "You are not authorized !" });
-   // }
+    Controller.getAllPatient(req.params.id).then(function (data) {
+        res.status(data.status).send({ data: data.patientviewdata });
+    }).catch(function (err) {
+        res.status(err.status).send({ message: "Error" });
+    })
+    //  } else {
+    //  res.status("401").send({ message: "You are not authorized !" });
+    // }
 });
 /*router.get('/dummyData', function (req, res) {
     if (req.headers.authorization === "1234") {

@@ -23,8 +23,9 @@ export class Home extends React.Component {
                         <li><Link to={"/doctor/examination"}>Examination</Link></li>
                         <li><Link to={"/doctor/treatment"}>Treatment</Link></li>
                         <li><Link to={"/doctor/injection"}>Order Injection</Link></li>
+                        <li><Link to={"/doctor/view"}>Create New Visit</Link></li>
                         <hr />
-                        <li><Link to={"/doctor/viewtable"}>Create View</Link></li>
+                        <li><Link to={"/doctor/viewtable"}>View Visits</Link></li>
                         <li><Link to={"/doctor/examinationtable"}>Examination View</Link></li>
                         <li><Link to={"/doctor/treatmenttable"}>Treatment View</Link></li>
                         <li><Link to={"/doctor/injectiontable"}>Injection View</Link></li>
@@ -42,12 +43,12 @@ export class Home extends React.Component {
                     <Link to={"/doctor/treatmenttable"}> Treatment view</Link>
                     <Link to={"/doctor/injectiontable"}>Injection view</Link>
                     <div className="displaybackground1">
-                        <hr/><h1>Patient Details</h1><hr/>
+                        <hr /><h1>Patient Details</h1><hr />
                         <h2>
                             NIC:{sessionStorage.getItem('patientnic')}<br />
                             Name:{sessionStorage.getItem('patientname')}<br />
                             Gender:{sessionStorage.getItem('patientgender')}<br />
-                            Date of Birth:{sessionStorage.getItem('patientbod')}
+                            Date of Birth:{sessionStorage.getItem('patientdob')}
                         </h2>
                     </div>
                 </div>

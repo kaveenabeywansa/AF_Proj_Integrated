@@ -22,6 +22,7 @@ export class Injection extends React.Component {
   save(obj) {
     console.log("dhsjkfhdk");
     axios.post('http://localhost:3001/Injection/', {
+      nic: sessionStorage.getItem('patientnic'),
       injectionDateandTime: this.state.date,
       injection: document.getElementById('Injection').value,
       iremaks: document.getElementById('Remark').value
@@ -50,8 +51,9 @@ export class Injection extends React.Component {
             <li><Link to={"/doctor/examination"}>Examination</Link></li>
             <li><Link to={"/doctor/treatment"}>Treatment</Link></li>
             <li><Link to={"/doctor/injection"}>Order Injection</Link></li>
+            <li><Link to={"/doctor/view"}>Create New Visit</Link></li>
             <hr />
-            <li><Link to={"/doctor/viewtable"}>Create View</Link></li>
+            <li><Link to={"/doctor/viewtable"}>View Visits</Link></li>
             <li><Link to={"/doctor/examinationtable"}>Examination View</Link></li>
             <li><Link to={"/doctor/treatmenttable"}>Treatment View</Link></li>
             <li><Link to={"/doctor/injectiontable"}>Injection View</Link></li>

@@ -19,7 +19,7 @@ class EditPatient extends Component {
                 if (response.data.data.length === 1) {
                     var res = response.data.data[0];
                     document.getElementById('name').innerHTML = res.Title + res.Full_Name;
-                    document.getElementById('nic').innerHTML += sessionStorage.getItem('patientnic');
+                    document.getElementById('hnic').innerHTML += sessionStorage.getItem('patientnic');
                     document.getElementById('genderinfo').innerHTML += res.gender;
                     document.getElementById('status').innerHTML += res.civil_status;
                     document.getElementById('dob').innerHTML += res.DateOfBirth;
@@ -38,6 +38,8 @@ class EditPatient extends Component {
                     document.getElementById('phone').value = res.phone;
                     document.getElementById('contactperson').value = res.contact_person_name;
                     document.getElementById('contactpersonphone').value = res.contact_person_tel;
+                    obj.state.file = res.Choose_file;
+                    obj.state.remarks = res.Remarks;
                 } else {
                     alert('An Error Occured !');
                 }
@@ -47,7 +49,9 @@ class EditPatient extends Component {
             });
     }
     state = {
-        date: new Date()
+        date: new Date(),
+        file: null,
+        remarks: null
     };
     updatePatient(obj) {
         axios.put('http://localhost:3001/patient/' + sessionStorage.getItem('patientnic'), {
@@ -64,12 +68,14 @@ class EditPatient extends Component {
             Address: document.getElementById('address').value,
             phone: document.getElementById('phone').value,
             contact_person_name: document.getElementById('contactperson').value,
-            contact_person_tel: document.getElementById('contactpersonphone').value
+            contact_person_tel: document.getElementById('contactpersonphone').value,
+            Choose_file: obj.state.file,
+            Remarks: obj.state.remarks
         })
             .then(function (response) {
                 alert('Successfully Edited !');
-                sessionStorage.setItem('patientnic', document.getElementById('nic'));
-                //obj.props.history.push('/nurse/patientoverview');
+                sessionStorage.setItem('patientnic', document.getElementById('nic').value);
+                obj.props.history.push('/nurse/overviewofpatient');
             })
             .catch(function (error) {
                 console.log(error);
@@ -99,7 +105,7 @@ class EditPatient extends Component {
                         <div className="card-body">
                             <h4 className="card-title">Patient Profile</h4>
                             <h3 id="name" className="card-title" >Display Name Here...</h3>
-                            <h5 id="nic" className="card-title">NIC: </h5>
+                            <h5 id="hnic" className="card-title">NIC: </h5>
                             <h5 id="genderinfo" className="card-title">Gender: </h5>
                             <h5 id="status" className="card-title">Status: </h5>
                             <h5 id="dob" className="card-title">Date of Birth: </h5>

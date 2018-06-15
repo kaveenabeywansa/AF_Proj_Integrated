@@ -18,7 +18,7 @@ var Controller = function () {
                 Address: data.Address,
                 phone: data.phone,
                 contact_person_name: data.contact_person_name,
-                contact_person_tel: data.contact_person_name,
+                contact_person_tel: data.contact_person_tel,
                 Choose_file: data.Choose_file,
                 Remarks: data.Remarks
 

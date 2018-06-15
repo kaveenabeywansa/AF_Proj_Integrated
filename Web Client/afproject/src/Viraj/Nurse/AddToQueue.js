@@ -112,7 +112,7 @@ class App extends Component {
                             </div>
                             <div class="form-group has-success">
                                 <label class="form-control-label">Assigned By</label>
-                                <input type="text" class="form-control is-valid" id="assign" onChange={event => this.onAssigByChange(event)} required={"true"} />
+                                <input type="text" value={sessionStorage.getItem('userFName')} class="form-control is-valid" id="assign" onChange={event => this.onAssigByChange(event)} required={"true"} />
                             </div>
                             <div class="form-group">
                                 <label for="exampleTextarea">Remarks</label>

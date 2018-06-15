@@ -30,8 +30,7 @@ export default class DocHome extends Component {
 
     }
     getAll() {
-        var doc = sessionStorage.getItem('userFname');
-        axios.get(api.API + "queue/" + doc).then(res => {
+        axios.get(api.API + "queue/" + sessionStorage.getItem('userFName')).then(res => {
             this.setState({
                 queue: res.data.data || res.data
             });
@@ -43,18 +42,22 @@ export default class DocHome extends Component {
             this.state.status = 'Hold';
             document.getElementById("but").style.color = "red";
             document.getElementById("but").innerHTML = "Hold Queue";
+            document.getElementById("as").value = "Close";
+
         }
         else if (val === 'Hold') {
             this.state.status = 'Run';
             document.getElementById("but").style.color = "blue";
             document.getElementById("but").innerHTML = "Run Queue";
+            document.getElementById("as").value = "Open";
+
         }
     }
     changeDocOnline(event) {
         event.preventDefault();
         event.stopPropagation();
         if (this.state.status === 'Run') {
-            axios.delete(api.API + "doctor/Nishantha").then(res => {
+            axios.delete(api.API + "doctor/"+sessionStorage.getItem('userFName')).then(res => {
                 this.changeButton('Run');
             }).catch(err => {
                 alert(err);
@@ -75,7 +78,7 @@ export default class DocHome extends Component {
         sessionStorage.setItem('patientname', name);
         sessionStorage.setItem('patientgender', gender);
         sessionStorage.setItem('patientdob', dob);
-        obj.props.history.push('/doctor/questionnaire');
+        obj.props.history.push('/doctor/home');
     }
     removePatient(id) {
         var ids = id;
@@ -95,7 +98,6 @@ export default class DocHome extends Component {
                     <ul>
                         <li><Link to={"/doctor/"}>OPD</Link></li>
                         <li><Link to={"/doctor/"}>Dashboard</Link></li>
-                        <li><Link to={"/doctor/home"}>My OPD Patients</Link></li>
                         <li><Link to={"/doctor/questionnaire"}>Questionnaire</Link></li>
                     </ul>
                 </div>
@@ -120,7 +122,7 @@ export default class DocHome extends Component {
                             <tr>
                                 <td className={"left-field-d"}>Queue Status </td>
                                 <td className={"left-field-d"}>:</td>
-                                <td className={"right-field-d"}>Open</td>
+                                <td className={"right-field-d"} id="as">Open</td>
                             </tr>
                             <hr />
                             <tr>
@@ -150,7 +152,7 @@ export default class DocHome extends Component {
                                 </thead>
                                 <tbody>
                                     {this.state.patient.map(patient =>
-                                        <tr class="table-active" key={patient.id} onClick={event => this.setNICSession(this, patient.nic, patient.name, patient.gender, patient.DateOfBirth)}>
+                                        <tr class="table-active" key={patient.id} onClick={event => this.setNICSession(this, patient.nic, patient.Full_Name, patient.gender, patient.DateOfBirth)}>
                                             <td className={"field-border-1"}>{patient.nic}</td>
                                             <td className={"field-border-1"}>{patient.Full_Name}</td>
                                             <td className={"field-border-1"}>{patient.DateOfBirth}</td>

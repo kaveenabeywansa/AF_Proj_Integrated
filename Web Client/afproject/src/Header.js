@@ -16,7 +16,7 @@ export default class Header extends Component {
                         <Navbar.Toggle />
                     </Navbar.Header>
                     <Navbar.Collapse>
-                        <Nav>
+                        {/* <Nav>
                             <NavItem eventKey={1} href="#">
                                 Link
                         </NavItem>
@@ -30,10 +30,10 @@ export default class Header extends Component {
                                 <MenuItem divider />
                                 <MenuItem eventKey={3.3}>Separated link</MenuItem>
                             </NavDropdown>
-                        </Nav>
+                        </Nav> */}
                         <Nav pullRight>
                             <NavItem eventKey={1} href="#">
-                                Link Right
+                                {'Welcome '+sessionStorage.getItem('userFName')+' '+sessionStorage.getItem('userLName')}
                         </NavItem>
                             <NavItem eventKey={2} href="#">
                                 <Link to={"/logout"}>Log Out</Link>

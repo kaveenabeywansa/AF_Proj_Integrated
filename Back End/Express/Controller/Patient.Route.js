@@ -36,7 +36,7 @@ Router.get('/:id', function (req, res) {
     //     res.status("401").send({ message: "UnAuthorized Access.....!" });
     // }
 });
-Router.put('/:nic', function (req, res) {
+Router.put('/:id', function (req, res) {
     //if (req.headers.authorization === "abc") {
         Controller.updatePatient(req.params.id, req.body).then(function (data) {
             res.status(data.status).send({ data: data.patientUpdated });

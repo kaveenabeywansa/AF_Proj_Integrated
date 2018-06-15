@@ -33,8 +33,9 @@ export class Treatmenttable extends React.Component {
                         <li><Link to={"/doctor/examination"}>Examination</Link></li>
                         <li><Link to={"/doctor/treatment"}>Treatment</Link></li>
                         <li><Link to={"/doctor/injection"}>Order Injection</Link></li>
+                        <li><Link to={"/doctor/view"}>Create New Visit</Link></li>
                         <hr />
-                        <li><Link to={"/doctor/viewtable"}>Create View</Link></li>
+                        <li><Link to={"/doctor/viewtable"}>View Visits</Link></li>
                         <li><Link to={"/doctor/examinationtable"}>Examination View</Link></li>
                         <li><Link to={"/doctor/treatmenttable"}>Treatment View</Link></li>
                         <li><Link to={"/doctor/injectiontable"}>Injection View</Link></li>
