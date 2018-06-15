@@ -2,6 +2,7 @@ var express = require('express');
 var Router = express.Router();
 var Controller = require('./PatientController');
 
+
 Router.post('/', function (req, res) {
     // if (req.headers.authorization === "abc") {
     Controller.addPatient(req.body).then(function (data) {
@@ -24,7 +25,7 @@ Router.get('/', function (req, res) {
     //  res.status("401").send({ message: "UnAuthorized Access.....!" });
     // }
 });
-Router.get('/:id', function (req, res) {
+Router.get('/:nic', function (req, res) {
     //if (req.headers.authorization === "abc") {
         Controller.searchPatient(req.params.id).then(function (data) {
             res.status(data.status).send({ data: data.patientSearch });
@@ -35,7 +36,7 @@ Router.get('/:id', function (req, res) {
     //     res.status("401").send({ message: "UnAuthorized Access.....!" });
     // }
 });
-Router.put('/:id', function (req, res) {
+Router.put('/:nic', function (req, res) {
     //if (req.headers.authorization === "abc") {
         Controller.updatePatient(req.params.id, req.body).then(function (data) {
             res.status(data.status).send({ data: data.patientUpdated });

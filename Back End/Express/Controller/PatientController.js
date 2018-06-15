@@ -52,7 +52,7 @@ var Controller = function () {
     this.updatePatient = function (nic, body) {
         return new Promise(function (resolve, reject) {
             PatientSchema.update({ nic: nic }, body).then(function (data) {
-                resolve({ status: 200, menuUpdated: data });
+                resolve({ status: 200, patientUpdated: data });
             }).catch(function (err) {
                 reject({ status: 404, message: "NIC Not Found......!" });
             })

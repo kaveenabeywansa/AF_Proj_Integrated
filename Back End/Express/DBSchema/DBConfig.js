@@ -19,7 +19,7 @@ const PatientSchema=new Schema({
     other_name:String,
     civil_status:String,
     gender:String,
-    DateOfBirth:String,
+    DateOfBirth:Date,
     nic:String,
     citizenship:String,
     Blood_Group:String,

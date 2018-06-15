@@ -36,15 +36,7 @@ class OverviewOfPatient extends Component {
     document.getElementById('blood').innerHTML += sessionStorage.getItem('patientblood');
 
 
-    // sessionStorage.getItem('patientnic');
-    // // sessionStorage.getItem('patientname');
-    // sessionStorage.getItem('patienthin');
-    // sessionStorage.getItem('patientgender');
-    // sessionStorage.getItem('patientstatus');
-    // sessionStorage.getItem('patientdob');
-    // sessionStorage.getItem('patientphone');
-    // sessionStorage.getItem('patientaddress');
-    // sessionStorage.getItem('patientblood');
+
   }
   render() {
     return (
@@ -75,6 +67,7 @@ class OverviewOfPatient extends Component {
                       <div className="rus">
                         <ImageHeader style={{ height: '155px', width: '200px', display: 'block' }} imageSrc={patient} alt="Card image" />
                       </div>
+                      
 
                       <div className="row">
                         <div className="col-md-4">

@@ -13,9 +13,7 @@ export class Root extends React.Component {
                         <Header />
         
                     </div>
-                    <div >
-                   {/*dapan side bar eka*/}
-                    </div>
+                
                     
                     <div >
                         {this.props.children}

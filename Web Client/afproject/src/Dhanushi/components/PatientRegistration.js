@@ -47,7 +47,8 @@ class PatientRegistration extends Component {
         sessionStorage.setItem('patientphone', document.getElementById('phone').vallue);
         sessionStorage.setItem('patientaddress', document.getElementById('Address').value);
         sessionStorage.setItem('patientblood', document.getElementById('Blood_Group').value);
-        alert("registered");
+
+        alert("Patient Registered Successfully..");
         object.props.history.push('/nurse/OverviewOfPatient');
 
       }).catch(function (err) {
@@ -113,6 +114,17 @@ class PatientRegistration extends Component {
                   <label htmlFor="DateOfBirth">DateOfBirth</label>
                   <Calendar onChange={(e) => this.datePicked(e, this)} value={this.state.date} />
                 </div>
+
+                {/* <div>
+                  <DatePicker
+                    dayPickerProps={{
+                      month: new Date(2018, 10),
+                      showWeekNumbers: true,
+                      todayButton: 'Today',
+                    }}
+                  />
+                </div> */}
+
               </div>
               <div className="PatientIdentityDetails">
                 <h2>Patient Personal Details</h2>
@@ -167,15 +179,7 @@ class PatientRegistration extends Component {
                   <label htmlFor="contact_person_name">contact_person_name</label>
                   <input type="text" className="form-control" id="contact_person_name" placeholder="contact_person_name"></input>
                 </div>
-                <div>
-                  <DatePicker
-                    dayPickerProps={{
-                      month: new Date(2018, 10),
-                      showWeekNumbers: true,
-                      todayButton: 'Today',
-                    }}
-                  />
-                </div>
+                
                 <div className="form-group">
                   <label htmlFor="contact_person_tel">contact_person_tel</label>
                   <input type="text" className="form-control" id="contact_person_tel" placeholder="contact_person_tel"></input>
