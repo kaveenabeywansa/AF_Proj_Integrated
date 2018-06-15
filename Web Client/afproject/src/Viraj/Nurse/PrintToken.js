@@ -4,8 +4,8 @@ import axios from 'axios';
 import api from '../Urls';
 import Patient from './PatientDetails';
 import NavBar from '../NavBar';
-import {Panel,FormControl,ControlLabel,FormGroup,Button,Form} from 'react-bootstrap';
 import Header from '../Header';
+import {Panel,FormControl,ControlLabel,FormGroup,Button,Form} from 'react-bootstrap';
 
 export default class PrintToken extends Component{
     constructor(props){
@@ -27,10 +27,7 @@ export default class PrintToken extends Component{
     render(){
         return(
             <div>
-            <div>
-                <Header />
-            </div>
-            <div>
+                <Header/>
                 <NavBar/>
                 <div className={"bottom-content"}>
                     <Panel bsStyle="primary">
@@ -53,7 +50,6 @@ export default class PrintToken extends Component{
                         </Panel.Body>
                     </Panel>
                 </div>
-            </div>
             </div>
         );
     }
