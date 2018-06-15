@@ -33,6 +33,62 @@ const PatientSchema=new Schema({
 
 });
 
+const OnlineDoctorSchema=Schema({
+    name: {
+        type: String,
+        require: true
+    }
+});
+
+const QuestionSchema=Schema({
+    name: {
+        type: String,
+        require: true
+    },
+    relateTo: {
+        type: String,
+        require: true
+    },
+    remarks: {
+        type: String,
+        require: true
+    },
+    question: {
+        type: String,
+        require: true
+    },
+    answer: {
+        type: String,
+        require: true
+    }
+});
+
+const QueueSchema=Schema({
+    doctor: {
+        type: String,
+        require: true
+    },
+    patient: {
+        type: String,
+        require: true
+    },
+    time:{
+        type:String,
+        require: true
+    },
+    assignedBy: {
+        type: String,
+        require: true
+    },
+    remarks: {
+        type:String,
+        require: true
+    }
+});
+
+mongoose.model('Queue',QueueSchema);
+mongoose.model('Question',QuestionSchema);
+mongoose.model('Onlinedoc',OnlineDoctorSchema);
 mongoose.model('Alergy', Alergy);
 mongoose.model('Attachments', Attachments);
 mongoose.model('Patient',PatientSchema);

@@ -14,6 +14,13 @@ import Login from './Kaveen/Components/Login';
 import Logout from './Kaveen/Components/Logout';
 import NurseAccCreate from './Kaveen/Components/NurseReg';
 import AccCreate from './Kaveen/Components/Register.js';
+// Viraj
+import DocHome from './Viraj/Doctor/DocHome';
+import Questionnaire from './Viraj/Doctor/Questionnaire';
+import ViewQuestions from './Viraj/Doctor/ViewQuestions';
+import AddToQueue from './Viraj/Nurse/AddToQueue';
+import PatientDetails from './Viraj/Nurse/PatientDetails';
+import PrintToken from './Viraj/Nurse/PrintToken';
 export default () => {
     return (
         <BrowserRouter>
@@ -34,7 +41,13 @@ export default () => {
                 <Route path="/nurse/addalergies" exact component={AddAlergies} />
                 <Route path="/nurse/allpatients" exact component={AllPatients} />
 
+                <Route path="/doctor" exact component={DocHome} />
+                <Route path="/doctor/questionnaire" exact component={Questionnaire} />
+                <Route path="/doctor/viewquestions" exact component={ViewQuestions} />
 
+                <Route path="/nurse/addtoqueue" exact component={AddToQueue} />
+                <Route path="/nurse/patientdetails" exact component={PatientDetails} />
+                <Route path="/nurse/printtoken" exact component={PrintToken} />
             </Switch>
         </BrowserRouter>
     )
