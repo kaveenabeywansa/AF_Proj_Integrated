@@ -34,3 +34,10 @@ html{
     margin-top: 5%;
     width: 75%;
 }
+.displaybackground1{
+    text-align: center;
+    background-color: white;
+    margin-top: 1%;
+    width: 100%;
+    padding: 5px;
+}

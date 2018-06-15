@@ -1,70 +1,70 @@
 import React, { Component } from 'react';
 import './AddToQueue.css';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import api from '../Urls';
 import Patient from './PatientDetails';
-import dateFormat  from 'dateformat';
+import dateFormat from 'dateformat';
 import NavBar from '../NavBar';
 import Header from '../Header';
-import {Panel,FormControl,ControlLabel,FormGroup,Button,Form} from 'react-bootstrap';
+import { Panel, FormControl, ControlLabel, FormGroup, Button, Form } from 'react-bootstrap';
 var now = new Date();
 
 class App extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             doctors: [],
             doctor: '',
             nurse: '',
             patient: '',
             time: dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT"),
-            remarks:''
+            remarks: ''
         };
     }
-    componentDidMount(){
-        axios.get(api.API+"doctor").then(res=>{
+    componentDidMount() {
+        axios.get(api.API + "doctor").then(res => {
             this.setState({
                 doctors: res.data.data || res.data
             });
         })
     }
-    validation(){
-        var val1=document.getElementById("exampleSelect2").value;
-        var val2=document.getElementById("assign").value;
-        var val3=document.getElementById("exampleTextarea").value;
+    validation() {
+        var val1 = document.getElementById("exampleSelect2").value;
+        var val2 = document.getElementById("assign").value;
+        var val3 = document.getElementById("exampleTextarea").value;
         if (val1.match(/^\d/) || val2.match(/^\d/) || val3.match(/^\d/)) {
             alert("Input values are incorrect");
         }
-        else{
+        else {
             this.onSubmit();
         }
     }
-    onDoctorChange(event){
+    onDoctorChange(event) {
         event.preventDefault();
-        this.state.doctor=event.target.value;
+        this.state.doctor = event.target.value;
     }
-    onAssigByChange(event){
-        event.preventDefault();
-        event.stopPropagation();
-        this.state.nurse= event.target.value;
-    }
-    onRemarksChange(event){
+    onAssigByChange(event) {
         event.preventDefault();
         event.stopPropagation();
-        this.state.remarks=event.target.value;
+        this.state.nurse = event.target.value;
     }
-    onSubmit(){
-        var pat=sessionStorage.getItem('patientnic');
-        axios.post(api.API+"queue",{
-            doctor:document.getElementById("exampleSelect2").value,
+    onRemarksChange(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.state.remarks = event.target.value;
+    }
+    onSubmit(obj) {
+        var pat = sessionStorage.getItem('patientnic');
+        axios.post(api.API + "queue", {
+            doctor: document.getElementById("exampleSelect2").value,
             patient: pat,
-            time:dateFormat(now),
-            assignedBy:document.getElementById("assign").value,
+            time: dateFormat(now),
+            assignedBy: document.getElementById("assign").value,
             remarks: document.getElementById("exampleTextarea").value
-        }).then(res=>{
+        }).then(res => {
             alert("Added successfully");
-        }).catch(err=>{
+        }).catch(err => {
             alert(err);
         });
         this.setState({
@@ -74,17 +74,23 @@ class App extends Component {
             time: '',
             assignedBy: ''
         })
+        obj.props.history.push('/nurse/printtoken');
     }
     render() {
-    return (<div>
-            <Header/>
-            <NavBar/>
+        return (<div>
+            <Header />
+            <div className="nav-bar">
+                <ul>
+                    <li><Link to={"/nurse/"}>OPD</Link></li>
+                    <li><Link to={"/nurse/overviewofpatient"}>Patient Overview</Link></li>
+                </ul>
+            </div>
             <div className={"bottom-content"}>
                 <Panel bsStyle="primary">
                     <Panel.Heading>
                         <Panel.Title componentClass="h3">Patient Information</Panel.Title>
                     </Panel.Heading>
-                    <Panel.Body><Patient/></Panel.Body>
+                    <Panel.Body><Patient /></Panel.Body>
                 </Panel>
                 <Panel bsStyle="primary">
                     <Panel.Heading>
@@ -94,32 +100,32 @@ class App extends Component {
                         <form onSubmit={() => this.validation()}>
                             <div class="form-group">
                                 <label for="exampleSelect2">Assign To</label>
-                                <select multiple="" class="form-control" id="exampleSelect2" onChange={event=>this.onDoctorChange(event)}>
-                                    {this.state.doctors.map(doctor=>
+                                <select multiple="" class="form-control" id="exampleSelect2" onChange={event => this.onDoctorChange(event)}>
+                                    {this.state.doctors.map(doctor =>
                                         <option value={doctor.name}>Dr. {doctor.name}</option>
                                     )}
                                 </select>
                             </div>
                             <div class="form-group has-success">
                                 <label class="form-control-label">Date and Time</label>
-                                <input type="text" class="form-control is-valid" id="inputValid" value={dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT")}/>
+                                <input type="text" class="form-control is-valid" id="inputValid" value={dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT")} />
                             </div>
                             <div class="form-group has-success">
                                 <label class="form-control-label">Assigned By</label>
-                                <input type="text"class="form-control is-valid" id="assign" onChange={event => this.onAssigByChange(event)} required={"true"}/>
+                                <input type="text" class="form-control is-valid" id="assign" onChange={event => this.onAssigByChange(event)} required={"true"} />
                             </div>
                             <div class="form-group">
                                 <label for="exampleTextarea">Remarks</label>
                                 <textarea class="form-control" id="exampleTextarea" rows="3" required={"true"}></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button onClick={()=>this.onSubmit(this)} type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </Panel.Body>
                 </Panel>
             </div>
         </div>
-    );
-  }
+        );
+    }
 }
 
 export default App;

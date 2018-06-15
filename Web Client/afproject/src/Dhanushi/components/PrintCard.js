@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import Barcode from 'react-barcode';
 import { Card, CardBody, ImageHeader } from 'react-simple-card';
 import ReactToPrint from "react-to-print";
-import Header from './Header';
+import Header from '../../Header';
 import './PrintCard.css';
 import patient from './patient.png';
+import { Link } from 'react-router-dom';
 
 class PrintCard extends Component {
   render() {
@@ -12,6 +13,12 @@ class PrintCard extends Component {
       <div>
         <div>
           <Header />
+          <div className="nav-bar">
+            <ul>
+              <li><Link to={"/nurse/"}>OPD</Link></li>
+              <li><Link to={"/nurse/overviewofpatient"}>Patient Overview</Link></li>
+            </ul>
+          </div>
         </div>
         <div className="PrintCard">
           <center><h1>Print Card</h1></center>

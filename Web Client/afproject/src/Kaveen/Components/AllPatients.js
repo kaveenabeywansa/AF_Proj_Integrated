@@ -3,24 +3,26 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './Login.css';
 import { Nav, NavItem, Navbar, NavDropdown, MenuItem } from "react-bootstrap"
+import Header from '../../Header';
+import { Link } from 'react-router-dom';
 
 class AllPatients extends Component {
     state = {
         list: null
     }
-    clickedLink(obj,data){
-        sessionStorage.setItem('patientnic',data.nic);
-        sessionStorage.setItem('patientname',data.Full_Name);
-        sessionStorage.setItem('patientgender',data.gender);
-        sessionStorage.setItem('patientstatus',data.civil_status);
-        sessionStorage.setItem('patientdob',data.DateOfBirth);
-        sessionStorage.setItem('patientphone',data.phone);
-        sessionStorage.setItem('patientaddress',data.Address);
-        sessionStorage.setItem('patientblood',data.Blood_Group);
-        sessionStorage.setItem('patientnic',data.nic);
+    clickedLink(obj, data) {
+        sessionStorage.setItem('patientnic', data.nic);
+        sessionStorage.setItem('patientname', data.Full_Name);
+        sessionStorage.setItem('patientgender', data.gender);
+        sessionStorage.setItem('patientstatus', data.civil_status);
+        sessionStorage.setItem('patientdob', data.DateOfBirth);
+        sessionStorage.setItem('patientphone', data.phone);
+        sessionStorage.setItem('patientaddress', data.Address);
+        sessionStorage.setItem('patientblood', data.Blood_Group);
+        sessionStorage.setItem('patientnic', data.nic);
 
         //Change the link to go to the patient overvie page
-        obj.props.history.push('nurse/patientoverview');
+        obj.props.history.push('/nurse/overviewofpatient');
     }
     componentDidMount() {
         var obj = this;
@@ -28,7 +30,7 @@ class AllPatients extends Component {
             .then(function (response) {
                 const listItems = response.data.data.map((number) =>
 
-                    <tr onClick={()=>obj.clickedLink(obj,number)} className="allpatients" key={number.nic}>
+                    <tr onClick={() => obj.clickedLink(obj, number)} className="allpatients" key={number.nic}>
                         <th scope="row"><a>{number.Full_Name}</a></th>
                         <td>{number.DateOfBirth}</td>
                         <td>{number.gender}</td>
@@ -48,47 +50,15 @@ class AllPatients extends Component {
         return (
             <div>
                 <div>
-                    <Navbar inverse collapseOnSelect>
-                        <Navbar.Header>
-                            <Navbar.Brand>
-                                <a href="#brand">React-Bootstrap</a>
-                            </Navbar.Brand>
-                            <Navbar.Toggle />
-                        </Navbar.Header>
-                        <Navbar.Collapse>
-                            <Nav>
-                                <NavItem eventKey={1} href="#">
-                                    Link
-                                </NavItem>
-                                <NavItem eventKey={2} href="#">
-                                    Link
-                                </NavItem>
-                                <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-                                    <MenuItem eventKey={3.1}>Action</MenuItem>
-                                    <MenuItem eventKey={3.2}>Another action</MenuItem>
-                                    <MenuItem eventKey={3.3}>Something else here</MenuItem>
-                                    <MenuItem divider />
-                                    <MenuItem eventKey={3.3}>Separated link</MenuItem>
-                                </NavDropdown>
-                            </Nav>
-                            <Nav pullRight>
-                                <NavItem eventKey={1} href="#">
-                                    Link Right
-                                </NavItem>
-                                <NavItem eventKey={2} href="#">
-                                    Link Right
-                                </NavItem>
-                            </Nav>
-                        </Navbar.Collapse>
-                    </Navbar>
+                    <Header />
                 </div>
                 <div>
                     <div className="nav-bar">
                         <ul>
-                            <li>Patient Overview</li>
-                            <li>My OPD Patients</li>
-                            <li>My Queue</li>
-                            <li>Questionnaire</li>
+                            <li><Link to={"/nurse/"}>OPD</Link></li>
+                            <li><Link to={"/nurse/"}>Home</Link></li>
+                            <li><Link to={"/nurse/PatientRegistration"}>New Patient</Link></li>
+                            <li><Link to={"/nurse/allpatients"}>All Patients</Link></li>
                         </ul>
                     </div>
                     <div className="editPatient">

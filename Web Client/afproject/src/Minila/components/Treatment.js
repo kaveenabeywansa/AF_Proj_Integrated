@@ -18,7 +18,7 @@ export class Treatment extends React.Component {
   }
 
   save(obj) {
-    console.log("dhsjkfhdk");
+    // console.log("dhsjkfhdk");
     axios.post('http://localhost:3001/treatment/', {
       TreatmentdateAndtime: this.state.date,
       Treatment: document.getElementById('Treatment').value,
@@ -62,11 +62,11 @@ export class Treatment extends React.Component {
               <div className="form-group">
                 <label htmlFor="exampleSelect2">Treatment</label>
                 <select multiple="" className="form-control" id="Treatment">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                  <option>Eye Exercise</option>
+                  <option>Meditation</option>
+                  <option>Ear Infection</option>
+                  <option>Treatment 4</option>
+                  <option>Treatment 5</option>
                 </select>
               </div>
               <div className="form-group">

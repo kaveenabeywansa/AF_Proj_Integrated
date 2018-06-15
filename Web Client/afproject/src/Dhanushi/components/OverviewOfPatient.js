@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { ImageHeader } from 'react-simple-card';
-import Header from './Header';
+import Header from '../../Header';
 import './OverviewOfPatient.css';
 import patient from './patient.png';
 
@@ -43,6 +43,17 @@ class OverviewOfPatient extends Component {
       <div>
         <div>
           <Header />
+          <div className="nav-bar">
+            <ul>
+              <li><Link to={"/nurse/"}>OPD</Link></li>
+              <li><Link to={"/nurse/"}>Home</Link></li>
+              <li><Link to={"/nurse/addtoqueue"}>Add to Queue</Link></li>
+              <li><Link to={"/nurse/editpatient"}>Edit Patient Details</Link></li>
+              <li><Link to={"/nurse/addalergies"}>Add Allergy</Link></li>
+              <li><Link to={"/nurse/allpatients"}>Attach File</Link></li>
+              <li><Link to={"/nurse/printcard"}>Patient Card</Link></li>
+            </ul>
+          </div>
         </div>
         <div className="OverviewOfPatient">
           <center><h1>Overview Of Patient</h1></center>
@@ -67,7 +78,7 @@ class OverviewOfPatient extends Component {
                       <div className="rus">
                         <ImageHeader style={{ height: '155px', width: '200px', display: 'block' }} imageSrc={patient} alt="Card image" />
                       </div>
-                      
+
 
                       <div className="row">
                         <div className="col-md-4">

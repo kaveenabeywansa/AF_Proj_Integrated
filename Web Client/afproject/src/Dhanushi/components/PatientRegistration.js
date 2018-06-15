@@ -2,7 +2,8 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import Calendar from 'react-calendar';
 import DatePicker from 'react-date-picker';
-import Header from './Header';
+import Header from '../../Header';
+import { Link } from "react-router-dom";
 import './PatientRegistration.css';
 
 class PatientRegistration extends Component {
@@ -56,12 +57,20 @@ class PatientRegistration extends Component {
       });
   };
 
-
+  go() {
+    alert('fuck')
+  }
   render() {
     return (
       <div>
         <div>
           <Header />
+          <div className="nav-bar">
+            <ul>
+              <li><Link to={"/nurse/"}>OPD</Link></li>
+              <li><Link to={"/nurse/"}>Home</Link></li>
+            </ul>
+          </div>
         </div>
         <div className="PatientRegistration">
           <center><h1>Patient Registration</h1></center>
@@ -179,7 +188,7 @@ class PatientRegistration extends Component {
                   <label htmlFor="contact_person_name">contact_person_name</label>
                   <input type="text" className="form-control" id="contact_person_name" placeholder="contact_person_name"></input>
                 </div>
-                
+
                 <div className="form-group">
                   <label htmlFor="contact_person_tel">contact_person_tel</label>
                   <input type="text" className="form-control" id="contact_person_tel" placeholder="contact_person_tel"></input>

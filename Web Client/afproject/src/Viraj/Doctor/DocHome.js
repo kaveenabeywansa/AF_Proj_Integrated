@@ -1,15 +1,16 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './DocHome.css';
 import axios from 'axios';
 import api from '../Urls';
 import NavBar from '../NavBar';
 import Header from '../Header';
-import {Panel,FormControl,ControlLabel,FormGroup,Button,Form} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Panel, FormControl, ControlLabel, FormGroup, Button, Form } from 'react-bootstrap';
 
 export default class DocHome extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             queue: [],
             patient: [],
             id: '',
@@ -17,10 +18,10 @@ export default class DocHome extends Component {
         };
         this.getAll();
     }
-    getQueue(){
-        this.state.queue.map(queue=>{
-            var nic=queue.patient;
-            axios.get(api.API+"patient/"+nic).then(res=>{
+    getQueue() {
+        this.state.queue.map(queue => {
+            var nic = queue.patient;
+            axios.get(api.API + "patient/" + nic).then(res => {
                 this.setState({
                     patient: res.data.data || res.data
                 });
@@ -28,65 +29,76 @@ export default class DocHome extends Component {
         });
 
     }
-    getAll(){
-        var doc=sessionStorage.getItem('userFname');
-        axios.get(api.API+"queue/"+doc).then(res=>{
+    getAll() {
+        var doc = sessionStorage.getItem('userFname');
+        axios.get(api.API + "queue/" + doc).then(res => {
             this.setState({
-                    queue: res.data.data || res.data
+                queue: res.data.data || res.data
             });
             this.getQueue();
         });
     }
-    changeButton(val){
-        if(val === 'Run'){
-            this.state.status= 'Hold';
+    changeButton(val) {
+        if (val === 'Run') {
+            this.state.status = 'Hold';
             document.getElementById("but").style.color = "red";
             document.getElementById("but").innerHTML = "Hold Queue";
         }
-        else if(val === 'Hold'){
-            this.state.status= 'Run';
+        else if (val === 'Hold') {
+            this.state.status = 'Run';
             document.getElementById("but").style.color = "blue";
             document.getElementById("but").innerHTML = "Run Queue";
         }
     }
-    changeDocOnline(event){
+    changeDocOnline(event) {
         event.preventDefault();
         event.stopPropagation();
-        if(this.state.status==='Run'){
-            axios.delete(api.API+"doctor/Nishantha").then(res=>{
+        if (this.state.status === 'Run') {
+            axios.delete(api.API + "doctor/Nishantha").then(res => {
                 this.changeButton('Run');
-            }).catch(err=>{
+            }).catch(err => {
                 alert(err);
             });
         }
-        else{
-            var doc1=sessionStorage.getItem('userFName');
-            axios.post(api.API+"doctor/",{name: doc1}).then(res=>{
+        else {
+            var doc1 = sessionStorage.getItem('userFName');
+            axios.post(api.API + "doctor/", { name: doc1 }).then(res => {
                 this.changeButton('Hold');
-            }).catch(err=>{
+            }).catch(err => {
                 alert(err);
             });
         }
     }
-    setNICSession(obj,nic){
+    setNICSession(obj, nic, name, gender, dob) {
+        // this,patient.nic,patient.name,patient.gender,patient.DateOfBirth
         sessionStorage.setItem('patientnic', nic);
+        sessionStorage.setItem('patientname', name);
+        sessionStorage.setItem('patientgender', gender);
+        sessionStorage.setItem('patientdob', dob);
         obj.props.history.push('/doctor/questionnaire');
     }
-    removePatient(id){
-        var ids=id;
-        axios.delete(api.API+"queue/"+ids).then(res=>{
-            if(res.status == 200){
+    removePatient(id) {
+        var ids = id;
+        axios.delete(api.API + "queue/" + ids).then(res => {
+            if (res.status == 200) {
                 alert("Successfully deleted");
             }
-        }).catch(err=>{
+        }).catch(err => {
             alert(err);
         });
     }
     render() {
         return (
             <div className={"DocHome"}>
-                <Header/>
-                <NavBar/>
+                <Header />
+                <div className="nav-bar">
+                    <ul>
+                        <li><Link to={"/doctor/"}>OPD</Link></li>
+                        <li><Link to={"/doctor/"}>Dashboard</Link></li>
+                        <li><Link to={"/doctor/home"}>My OPD Patients</Link></li>
+                        <li><Link to={"/doctor/questionnaire"}>Questionnaire</Link></li>
+                    </ul>
+                </div>
                 <div className={"bottom-content"}>
                     <Panel bsStyle="primary">
                         <Panel.Heading>
@@ -96,21 +108,21 @@ export default class DocHome extends Component {
                             <tr>
                                 <td className={"left-field-d"}>Name </td>
                                 <td className={"left-field-d"}>:</td>
-                                <td className={"right-field-d"}>Dr. Wasanatha</td>
+                                <td className={"right-field-d"}>Dr. {sessionStorage.getItem('userFName')}</td>
                             </tr>
-                            <hr/>
+                            <hr />
                             <tr>
                                 <td className={"left-field-d"}>No. of Patients </td>
                                 <td className={"left-field-d"}>:</td>
                                 <td className={"right-field-d"}>{this.state.queue.length}</td>
                             </tr>
-                            <hr/>
+                            <hr />
                             <tr>
                                 <td className={"left-field-d"}>Queue Status </td>
                                 <td className={"left-field-d"}>:</td>
                                 <td className={"right-field-d"}>Open</td>
                             </tr>
-                            <hr/>
+                            <hr />
                             <tr>
                                 <td className={"left-field-d"}>Queue Type </td>
                                 <td className={"left-field-d"}>:</td>
@@ -128,27 +140,27 @@ export default class DocHome extends Component {
                         <Panel.Body>
                             <table class="table table-hover">
                                 <thead>
-                                <tr>
-                                    <th scope="col" className={"field-border"}>Patient NIC</th>
-                                    <th scope="col" className={"field-border"}>Name</th>
-                                    <th scope="col" className={"field-border"}>Date Of Birth</th>
-                                    <th scope="col" className={"field-border"}>Sex</th>
-                                    <th scope="col" className={"field-border"}>Remarks</th>
-                                </tr>
+                                    <tr>
+                                        <th scope="col" className={"field-border"}>Patient NIC</th>
+                                        <th scope="col" className={"field-border"}>Name</th>
+                                        <th scope="col" className={"field-border"}>Date Of Birth</th>
+                                        <th scope="col" className={"field-border"}>Sex</th>
+                                        <th scope="col" className={"field-border"}>Remarks</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                {this.state.patient.map(patient=>
-                                    <tr class="table-active" key={patient.id} onClick={event=>this.setNICSession(this,patient.nic)}>
-                                        <td className={"field-border-1"}>{patient.nic}</td>
-                                        <td className={"field-border-1"}>{patient.Full_Name}</td>
-                                        <td className={"field-border-1"}>{patient.DateOfBirth}</td>
-                                        <td className={"field-border-1"}>{patient.gender}</td>
-                                        <td className={"field-border-1"}>{patient.Remarks}</td>
-                                        <td className={"field-border-1"}>
-                                            <Button bsStyle="primary" onClick={event=>this.removePatient(patient.nic)}>Dismiss</Button>
-                                        </td>
-                                    </tr>
-                                )}
+                                    {this.state.patient.map(patient =>
+                                        <tr class="table-active" key={patient.id} onClick={event => this.setNICSession(this, patient.nic, patient.name, patient.gender, patient.DateOfBirth)}>
+                                            <td className={"field-border-1"}>{patient.nic}</td>
+                                            <td className={"field-border-1"}>{patient.Full_Name}</td>
+                                            <td className={"field-border-1"}>{patient.DateOfBirth}</td>
+                                            <td className={"field-border-1"}>{patient.gender}</td>
+                                            <td className={"field-border-1"}>{patient.Remarks}</td>
+                                            <td className={"field-border-1"}>
+                                                <Button bsStyle="primary" onClick={event => this.removePatient(patient.nic)}>Dismiss</Button>
+                                            </td>
+                                        </tr>
+                                    )}
                                 </tbody>
                             </table>
                         </Panel.Body>

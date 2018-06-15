@@ -1,7 +1,7 @@
 import React from "react";
 //import './home.css';
 import { Link } from "react-router-dom";
-import Header from './Header';
+import Header from '../../Header';
 
 export class Home extends React.Component {
 
@@ -11,6 +11,14 @@ export class Home extends React.Component {
             <center>
                 <div>
                     <Header />
+                    <div className="nav-bar">
+                        <ul>
+                            <li><Link to={"/nurse/"}>OPD</Link></li>
+                            <li><Link to={"/nurse/"}>Home</Link></li>
+                            <li><Link to={"/nurse/PatientRegistration"}>New Patient</Link></li>
+                            <li><Link to={"/nurse/allpatients"}>All Patients</Link></li>
+                        </ul>
+                    </div>
                 </div>
                 <div className="nurseHomeBckgrnd">
                     Home

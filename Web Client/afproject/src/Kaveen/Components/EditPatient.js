@@ -4,6 +4,8 @@ import Calendar from 'react-calendar';
 import axios from 'axios';
 import './Login.css';
 import { Nav, NavItem, Navbar, NavDropdown, MenuItem } from "react-bootstrap"
+import Header from '../../Header';
+import { Link } from 'react-router-dom';
 
 class EditPatient extends Component {
     constructor(props) {
@@ -11,13 +13,12 @@ class EditPatient extends Component {
         this.fillFields(this);
     }
     fillFields(obj) {
-        sessionStorage.setItem('patientnic', '1111');
+        // sessionStorage.setItem('patientnic', '1111');
         axios.get('http://localhost:3001/patient/' + sessionStorage.getItem('patientnic'))
             .then(function (response) {
                 if (response.data.data.length === 1) {
                     var res = response.data.data[0];
-
-                    document.getElementById('name').innerHTML = res.Title+res.Full_Name;
+                    document.getElementById('name').innerHTML = res.Title + res.Full_Name;
                     document.getElementById('nic').innerHTML += sessionStorage.getItem('patientnic');
                     document.getElementById('genderinfo').innerHTML += res.gender;
                     document.getElementById('status').innerHTML += res.civil_status;
@@ -84,47 +85,13 @@ class EditPatient extends Component {
         return (
             <div>
                 <div>
-                    <Navbar inverse collapseOnSelect>
-                        <Navbar.Header>
-                            <Navbar.Brand>
-                                <a href="#brand">React-Bootstrap</a>
-                            </Navbar.Brand>
-                            <Navbar.Toggle />
-                        </Navbar.Header>
-                        <Navbar.Collapse>
-                            <Nav>
-                                <NavItem eventKey={1} href="#">
-                                    Link
-                                </NavItem>
-                                <NavItem eventKey={2} href="#">
-                                    Link
-                                </NavItem>
-                                <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-                                    <MenuItem eventKey={3.1}>Action</MenuItem>
-                                    <MenuItem eventKey={3.2}>Another action</MenuItem>
-                                    <MenuItem eventKey={3.3}>Something else here</MenuItem>
-                                    <MenuItem divider />
-                                    <MenuItem eventKey={3.3}>Separated link</MenuItem>
-                                </NavDropdown>
-                            </Nav>
-                            <Nav pullRight>
-                                <NavItem eventKey={1} href="#">
-                                    Link Right
-                                </NavItem>
-                                <NavItem eventKey={2} href="#">
-                                    Link Right
-                                </NavItem>
-                            </Nav>
-                        </Navbar.Collapse>
-                    </Navbar>
+                    <Header />
                 </div>
                 <div>
                     <div className="nav-bar">
                         <ul>
-                            <li>Patient Overview</li>
-                            <li>My OPD Patients</li>
-                            <li>My Queue</li>
-                            <li>Questionnaire</li>
+                            <li><Link to={"/nurse/"}>OPD</Link></li>
+                            <li><Link to={"/nurse/overviewofpatient"}>Patient Overview</Link></li>
                         </ul>
                     </div>
                     <div className="patientSummery">
