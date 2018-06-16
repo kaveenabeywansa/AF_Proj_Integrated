@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
-import './AddToQueue.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
-import api from '../Urls';
-import Patient from './PatientDetails';
 import dateFormat from 'dateformat';
-import NavBar from '../NavBar';
+import React, { Component } from 'react';
+import { Panel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Header from '../../Header';
-import { Panel, FormControl, ControlLabel, FormGroup, Button, Form } from 'react-bootstrap';
+import api from '../Urls';
+import './AddToQueue.css';
+import Patient from './PatientDetails';
 var now = new Date();
 
 class App extends Component {
@@ -118,7 +117,7 @@ class App extends Component {
                                 <label for="exampleTextarea">Remarks</label>
                                 <textarea class="form-control" id="exampleTextarea" rows="3" required={"true"}></textarea>
                             </div>
-                            <button onClick={()=>this.onSubmit(this)} type="submit" class="btn btn-primary">Submit</button>
+                            <button onClick={() => this.onSubmit(this)} type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </Panel.Body>
                 </Panel>

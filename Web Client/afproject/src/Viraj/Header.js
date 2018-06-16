@@ -1,8 +1,6 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
+import { MenuItem, Nav, NavDropdown, NavItem, Navbar } from 'react-bootstrap';
 import './Header.css';
-import axios from 'axios';
-import api from './Urls';
-import {Navbar,Nav,NavItem,NavDropdown,MenuItem} from 'react-bootstrap';
 
 export default class Header extends Component{
     render(){

@@ -21,7 +21,7 @@ export class Home extends React.Component {
                     </div>
                 </div>
                 <div className="nurseHomeBckgrnd">
-                    <h1>Welcome {sessionStorage.getItem('userFName')+' '+sessionStorage.getItem('userLName')}</h1>
+                    <h1>Welcome {sessionStorage.getItem('userFName') + ' ' + sessionStorage.getItem('userLName')}</h1>
                     <h3>Register new <Link to={"/nurse/PatientRegistration"}>Patient</Link></h3>
                     <h3>View all <Link to={"/nurse/allpatients"}>Patients</Link></h3>
                 </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
+import { MenuItem, Nav, NavDropdown, NavItem, Navbar } from 'react-bootstrap';
+import { NavLink } from "react-router-dom";
 import './PrintCard.css';
 
 

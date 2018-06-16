@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
 //import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './Login.css';
-import { Nav, NavItem, Navbar, NavDropdown, MenuItem } from "react-bootstrap"
-import Header from '../../Header';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../../Header';
+import './Login.css';
 
 class AllPatients extends Component {
     state = {

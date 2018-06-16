@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
 //import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './Login.css';
-import Header from '../../Header';
-import { Nav, NavItem, Navbar, NavDropdown, MenuItem } from "react-bootstrap";
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../../Header';
+import './Login.css';
 
 class AddAlergies extends Component {
     saveAlergy(obj) {

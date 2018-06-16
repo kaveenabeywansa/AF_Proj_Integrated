@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import './PrintToken.css';
 import axios from 'axios';
+import React, { Component } from 'react';
+import { Panel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import Header from '../../Header';
 import api from '../Urls';
 import Patient from './PatientDetails';
-import NavBar from '../NavBar';
-import Header from '../../Header';
-import { Panel, FormControl, ControlLabel, FormGroup, Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import './PrintToken.css';
 
 export default class PrintToken extends Component {
     constructor(props) {

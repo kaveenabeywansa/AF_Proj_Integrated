@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
 import axios from 'axios';
+import React, { Component } from 'react';
 
 class NurseRegister extends Component {
-    validate(obj){
-        if ((document.getElementById("regno").value==="") || (document.getElementById("fname").value==="") ||
-        (document.getElementById("lname").value==="") || (document.getElementById("nic").value==="") ||
-        (document.getElementById("address").value==="") || (document.getElementById("phone").value==="") |
-        (document.getElementById("email").value==="") || (document.getElementById("username").value==="") ||
-        (document.getElementById("password").value==="") || (document.getElementById("confpassword").value==="")){
+    validate(obj) {
+        if ((document.getElementById("regno").value === "") || (document.getElementById("fname").value === "") ||
+            (document.getElementById("lname").value === "") || (document.getElementById("nic").value === "") ||
+            (document.getElementById("address").value === "") || (document.getElementById("phone").value === "") |
+            (document.getElementById("email").value === "") || (document.getElementById("username").value === "") ||
+            (document.getElementById("password").value === "") || (document.getElementById("confpassword").value === "")) {
             alert('Your cannot have empty field ! Please fill all fields to register !');
-        }else{
-            if(document.getElementById("password").value===document.getElementById("confpassword").value){
+        } else {
+            if (document.getElementById("password").value === document.getElementById("confpassword").value) {
                 this.registerNurse(obj);
-            }else{
+            } else {
                 alert('Password do not match... Re-check and Re-try !');
             }
         }
@@ -49,17 +49,17 @@ class NurseRegister extends Component {
                 alert('An error occured !');
             });
     }
-    clearFields(obj){
-        document.getElementById("regno").value="";
-        document.getElementById("fname").value="";
-        document.getElementById("lname").value="";
-        document.getElementById("nic").value="";
-        document.getElementById("address").value="";
-        document.getElementById("phone").value="";
-        document.getElementById("email").value="";
-        document.getElementById("username").value="";
-        document.getElementById("password").value="";
-        document.getElementById("confpassword").value="";
+    clearFields(obj) {
+        document.getElementById("regno").value = "";
+        document.getElementById("fname").value = "";
+        document.getElementById("lname").value = "";
+        document.getElementById("nic").value = "";
+        document.getElementById("address").value = "";
+        document.getElementById("phone").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+        document.getElementById("confpassword").value = "";
     }
     render() {
         return (

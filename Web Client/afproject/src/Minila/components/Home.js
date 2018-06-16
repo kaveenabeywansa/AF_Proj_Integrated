@@ -1,11 +1,9 @@
 import React from "react";
-import './home.css';
-import { Link } from "react-router-dom";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Viewtable } from "./Viewtable";
-import { Table } from "./Table";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import Header from '../../Header';
-import Sidebar from '../../NavBar';
+import { Table } from "./Table";
+import { Viewtable } from "./Viewtable";
+import './home.css';
 
 export class Home extends React.Component {
 

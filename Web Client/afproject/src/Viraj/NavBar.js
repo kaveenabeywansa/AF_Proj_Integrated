@@ -1,6 +1,5 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import './NavBar.css';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 export default class extends Component{
     render(){

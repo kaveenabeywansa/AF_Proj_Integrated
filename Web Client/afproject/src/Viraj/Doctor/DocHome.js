@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import './DocHome.css';
 import axios from 'axios';
-import api from '../Urls';
-import NavBar from '../NavBar';
-import Header from '../../Header';
+import React, { Component } from 'react';
+import { Button, Panel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { Panel, FormControl, ControlLabel, FormGroup, Button, Form } from 'react-bootstrap';
+import Header from '../../Header';
+import api from '../Urls';
+import './DocHome.css';
 
 export default class DocHome extends Component {
     constructor(props) {
@@ -57,7 +56,7 @@ export default class DocHome extends Component {
         event.preventDefault();
         event.stopPropagation();
         if (this.state.status === 'Run') {
-            axios.delete(api.API + "doctor/"+sessionStorage.getItem('userFName')).then(res => {
+            axios.delete(api.API + "doctor/" + sessionStorage.getItem('userFName')).then(res => {
                 this.changeButton('Run');
             }).catch(err => {
                 alert(err);
@@ -83,7 +82,7 @@ export default class DocHome extends Component {
     removePatient(id) {
         var ids = id;
         axios.delete(api.API + "queue/" + ids).then(res => {
-            if (res.status == 200) {
+            if (res.status === 200) {
                 alert("Successfully deleted");
             }
         }).catch(err => {

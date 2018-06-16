@@ -8,7 +8,7 @@ export class User extends React.Component {
 
     render() {
         return (
-            <div style={{color:'red'}}>
+            <div style={{ color: 'red' }}>
                 <h3>The User Page</h3>
 
             </div>

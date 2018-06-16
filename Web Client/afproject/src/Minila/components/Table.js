@@ -1,6 +1,4 @@
 import React from "react";
-//import { Home }from "./Home";
-import { Header } from "./Header";
 
 
 export class Table extends React.Component {

@@ -1,9 +1,8 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import Calendar from 'react-calendar';
-import DatePicker from 'react-date-picker';
-import Header from '../../Header';
 import { Link } from "react-router-dom";
+import Header from '../../Header';
 import './PatientRegistration.css';
 
 class PatientRegistration extends Component {

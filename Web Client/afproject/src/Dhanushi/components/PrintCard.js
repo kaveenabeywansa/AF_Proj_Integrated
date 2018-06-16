@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Barcode from 'react-barcode';
+import { Link } from 'react-router-dom';
 import { Card, CardBody, ImageHeader } from 'react-simple-card';
 import ReactToPrint from "react-to-print";
 import Header from '../../Header';
 import './PrintCard.css';
 import patient from './patient.png';
-import { Link } from 'react-router-dom';
 
 class PrintCard extends Component {
   render() {

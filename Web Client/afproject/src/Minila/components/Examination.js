@@ -1,9 +1,8 @@
-import React from "react";
 import axios from "axios";
+import React from "react";
 import Calendar from 'react-calendar';
-import Header from '../../Header';
-import Sidebar from '../../NavBar';
 import { Link } from "react-router-dom";
+import Header from '../../Header';
 
 export class Examination extends React.Component {
 
@@ -24,7 +23,7 @@ export class Examination extends React.Component {
   save(obj) {
     console.log("dhsjkfhdk");
     axios.post('http://localhost:3001/examination/', {
-      nic:sessionStorage.getItem('patientnic'),
+      nic: sessionStorage.getItem('patientnic'),
       ExaminationDataTime: this.state.date,
       hight: document.getElementById('hight').value,
       wight: document.getElementById('wight').value,

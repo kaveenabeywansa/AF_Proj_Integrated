@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import './ViewQuestions.css';
 import axios from 'axios';
-import api from '../Urls';
-import NavBar from '../NavBar';
-import Header from '../../Header';
+import React, { Component } from 'react';
+import { Panel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { Panel, FormControl, ControlLabel, FormGroup, Button, Form } from 'react-bootstrap';
+import Header from '../../Header';
+import api from '../Urls';
+import './ViewQuestions.css';
 
 export default class ViewQuestions extends Component {
     constructor(props) {

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 //import UserSession from '../../SessionDet';
 import axios from 'axios';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Login.css';
 
 class Login extends Component {
@@ -25,13 +25,11 @@ class Login extends Component {
             password: document.getElementById("password").value
         }).then(function (response) {
             if (response.data === "doctor") {
-                obj.saveLoggingUserToSession('doctor');
+                obj.saveLoggingUserToSession('doctor', obj);
                 obj.clearFields();
-                obj.doctorLogin(obj);
             } else if (response.data === "nurse") {
-                obj.saveLoggingUserToSession('nurse');
+                obj.saveLoggingUserToSession('nurse', obj);
                 obj.clearFields();
-                obj.nurseLogin(obj);
             } else {
                 alert('Incorrect Username or Password !')
             }
@@ -39,31 +37,32 @@ class Login extends Component {
             console.log(error);
         });
     }
-    saveLoggingUserToSession(type) {
+    saveLoggingUserToSession(type, obj) {
         sessionStorage.setItem('username', document.getElementById("username").value);
         sessionStorage.setItem('userType', type);
         sessionStorage.setItem('loggedin', 'true');
         axios.get('http://localhost:8080/' + type + '/' + document.getElementById("username").value)
             .then(function (response) {
                 // store users details in sessions
-                sessionStorage.setItem('userRegNo',response.data.docRegNo);
-                sessionStorage.setItem('userFName',response.data.fName);
-                sessionStorage.setItem('userLName',response.data.lName);
-                sessionStorage.setItem('userNic',response.data.nic);
-                sessionStorage.setItem('userPhone',response.data.phone);
-                alert('Welcome '+sessionStorage.getItem('userFName')+' '+sessionStorage.getItem('userLName'));
+                sessionStorage.setItem('userRegNo', response.data.docRegNo);
+                sessionStorage.setItem('userFName', response.data.fName);
+                sessionStorage.setItem('userLName', response.data.lName);
+                sessionStorage.setItem('userNic', response.data.nic);
+                sessionStorage.setItem('userPhone', response.data.phone);
+                obj.props.history.push('/' + type)
+                //alert('Welcome '+sessionStorage.getItem('userFName')+' '+sessionStorage.getItem('userLName'));
             }).catch(function (error) {
                 console.log(error);
             });
     }
-    doctorLogin(obj) {
-        //do the processing for the doctor's login
-        obj.props.history.push('/doctor');
-    }
-    nurseLogin(obj) {
-        //do the processing for the nurse's login
-        obj.props.history.push('/nurse');
-    }
+    // doctorLogin(obj) {
+    //     //do the processing for the doctor's login
+    //     //obj.props.history.push('/doctor');
+    // }
+    // nurseLogin(obj) {
+    //     //do the processing for the nurse's login
+    //     //obj.props.history.push('/nurse');
+    // }
     render() {
         return (
             <div className="LogInContainer" >

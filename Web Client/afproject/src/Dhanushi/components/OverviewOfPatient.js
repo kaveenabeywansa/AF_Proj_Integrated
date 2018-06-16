@@ -34,9 +34,6 @@ class OverviewOfPatient extends Component {
     document.getElementById('phone').innerHTML += sessionStorage.getItem('patientphone');
     document.getElementById('address').innerHTML += sessionStorage.getItem('patientaddress');
     document.getElementById('blood').innerHTML += sessionStorage.getItem('patientblood');
-
-
-
   }
   render() {
     return (

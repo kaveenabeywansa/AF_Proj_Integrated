@@ -1,11 +1,9 @@
-import React from "react";
-import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
+import React from "react";
 import Calendar from 'react-calendar';
-import Header from '../../Header';
-import Sidebar from '../../NavBar';
-import './home.css';
 import { Link } from "react-router-dom";
+import Header from '../../Header';
+import './home.css';
 export class Treatment extends React.Component {
 
   state = {

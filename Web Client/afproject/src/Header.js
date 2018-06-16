@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import './Header.css';
-import axios from 'axios';
+import { Nav, NavItem, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import './Header.css';
 
 export default class Header extends Component {
     render() {
@@ -33,8 +32,8 @@ export default class Header extends Component {
                         </Nav> */}
                         <Nav pullRight>
                             <NavItem eventKey={1} href="#">
-                                {'Welcome '+sessionStorage.getItem('userFName')+' '+sessionStorage.getItem('userLName')}
-                        </NavItem>
+                                {'Welcome ' + sessionStorage.getItem('userFName') + ' ' + sessionStorage.getItem('userLName')}
+                            </NavItem>
                             <NavItem eventKey={2} href="#">
                                 <Link to={"/logout"}>Log Out</Link>
                             </NavItem>

@@ -1,10 +1,8 @@
-import React from "react";
-import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
-import Header from '../../Header';
-import Sidebar from '../../NavBar';
-import './home.css';
+import React from "react";
 import { Link } from "react-router-dom";
+import Header from '../../Header';
+import './home.css';
 
 export class Treatmenttable extends React.Component {
 

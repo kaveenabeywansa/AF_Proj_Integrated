@@ -14,6 +14,17 @@ import Login from './Kaveen/Components/Login';
 import Logout from './Kaveen/Components/Logout';
 import NurseAccCreate from './Kaveen/Components/NurseReg';
 import AccCreate from './Kaveen/Components/Register.js';
+import { Examination } from "./Minila/components/Examination";
+import { Examinationtable } from "./Minila/components/Examinationtable";
+import DoctorHome from "./Minila/components/Home";
+import { Injection } from "./Minila/components/Injection";
+import { Injectiontable } from "./Minila/components/Injectiontable";
+import { Treatment } from "./Minila/components/Treatment";
+import { Treatmenttable } from "./Minila/components/Treatmenttable";
+// Minila
+import { User } from "./Minila/components/User";
+import { View } from "./Minila/components/View";
+import { Viewtable } from "./Minila/components/Viewtable";
 // Viraj
 import DocHome from './Viraj/Doctor/DocHome';
 import Questionnaire from './Viraj/Doctor/Questionnaire';
@@ -21,18 +32,6 @@ import ViewQuestions from './Viraj/Doctor/ViewQuestions';
 import AddToQueue from './Viraj/Nurse/AddToQueue';
 import PatientDetails from './Viraj/Nurse/PatientDetails';
 import PrintToken from './Viraj/Nurse/PrintToken';
-// Minila
-import { User } from "./Minila/components/User";
-import { View } from "./Minila/components/View";
-import { Examination } from "./Minila/components/Examination";
-import { Treatment } from "./Minila/components/Treatment";
-import { Injection } from "./Minila/components/Injection";
-import { Viewtable } from "./Minila/components/Viewtable";
-import { Examinationtable } from "./Minila/components/Examinationtable";
-import { Treatmenttable } from "./Minila/components/Treatmenttable";
-import { Injectiontable } from "./Minila/components/Injectiontable";
-import Header from "./Minila/components/Header";
-import DoctorHome from "./Minila/components/Home";
 export default () => {
     return (
         <BrowserRouter>
