@@ -55,14 +55,14 @@ class Login extends Component {
                 console.log(error);
             });
     }
-    // doctorLogin(obj) {
-    //     //do the processing for the doctor's login
-    //     //obj.props.history.push('/doctor');
-    // }
-    // nurseLogin(obj) {
-    //     //do the processing for the nurse's login
-    //     //obj.props.history.push('/nurse');
-    // }
+    doctorLogin(obj) {
+        //do the processing for the doctor's login
+        obj.props.history.push('/doctor');
+    }
+    nurseLogin(obj) {
+        //do the processing for the nurse's login
+        obj.props.history.push('/nurse');
+    }
     render() {
         return (
             <div className="LogInContainer" >
